@@ -69,7 +69,7 @@ function TestCamHelper() {
         position={[0, 0, 2]}
         onUpdate={self => self.updateProjectionMatrix()}
       />
-      {camera && <cameraHelper args={camera} />}
+      {camera && <cameraHelper args={[camera]} />}
     </>
   );
 }
