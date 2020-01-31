@@ -1,20 +1,20 @@
-import React, { useState, useEffect, useCallback } from 'react'
-import { Canvas, useResource, createPortal } from 'react-three-fiber'
+import React, { useState, useEffect, useCallback } from "react";
+import { Canvas, useResource, createPortal } from "react-three-fiber";
 
 function Icosahedron() {
-  const [active, set] = useState(false)
-  const handleClick = useCallback(e => set(state => !state), [])
+  const [active, set] = useState(false);
+  const handleClick = useCallback(e => set(state => !state), []);
   return (
     <mesh scale={active ? [2, 2, 2] : [1, 1, 1]} onClick={handleClick}>
       <icosahedronBufferGeometry attach="geometry" args={[1, 0]} />
       <meshNormalMaterial attach="material" />
     </mesh>
-  )
+  );
 }
 
 function RenderToPortal({ targets }) {
-  const [target, set] = useState(targets[0])
-  useEffect(() => void setTimeout(() => set(targets[1]), 1000), [])
+  const [target, set] = useState(targets[0]);
+  useEffect(() => void setTimeout(() => set(targets[1]), 1000), []);
   return (
     <>
       <mesh position={[-2, 0, 0]}>
@@ -23,19 +23,19 @@ function RenderToPortal({ targets }) {
       </mesh>
       {createPortal(<Icosahedron />, target)}
     </>
-  )
+  );
 }
 
 function Group() {
-  const [ref1, group1] = useResource()
-  const [ref2, group2] = useResource()
+  const [ref1, group1] = useResource();
+  const [ref2, group2] = useResource();
   return (
     <group>
       <group ref={ref1} position={[0, 0, 0]} />
       <group ref={ref2} position={[2, 0, 0]} />
       {group1 && group2 && <RenderToPortal targets={[group1, group2]} />}
     </group>
-  )
+  );
 }
 
 export function Reparenting() {
@@ -43,9 +43,9 @@ export function Reparenting() {
     <Canvas>
       <Group />
     </Canvas>
-  )
+  );
 }
 
 Reparenting.navigationOptions = {
-  title: 'Reparenting',
+  title: "Reparenting"
 };
