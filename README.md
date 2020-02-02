@@ -26,7 +26,5 @@ Misc:
 
 - Install: `yarn` (`npm i` [doesn't work](https://github.com/jmatsushita/react-three-fiber-examples/issues/1))
 - Start `npm start`
-- Browser
-- Type `w` in the terminal to start the web build and open the browser.
-- Native
-  - Use the iOS camera to scan the QR code which will open the expo client.
+- Browser: Type `w` in the terminal to start the web build and open the browser.
+- Native: Use the iOS camera to scan the QR code which will open the expo client.
